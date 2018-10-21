@@ -1,3 +1,4 @@
+// style.backgroundColor doesnot work in Firefox while style.background works in all browsers
 let colors = [
     "rgb(255, 0, 0)",
     "rgb(255, 255, 0)",
@@ -8,13 +9,11 @@ let colors = [
 ];
 
 let squares = document.querySelectorAll('.square');
-let pickedColor = colors[3];
 let colorDisplay = document.querySelector('#colorDisplay');
+let messageDisplay = document.querySelector('#message');
+let pickedColor = colors[3];
 colorDisplay.textContent = pickedColor;
 
-
-
-// style.backgroundColor doesnot work in Firefox while style.background works in all browsers
 for (let i = 0; i < squares.length; i++) {
     // Add initial colors to squares
     squares[i].style.backgroundColor = colors[i];
@@ -23,12 +22,23 @@ for (let i = 0; i < squares.length; i++) {
         // Compare color to picked color
         let clickedColor = this.style.backgroundColor;
         if(clickedColor === pickedColor) {
-            console.log('Correct.')
+            messageDisplay.textContent = 'Correct';
+            changeColors(clickedColor);
         } else {
-            console.log(clickedColor);
-            console.log(pickedColor);
-            console.log('Wrong');
+            // Fades incorrect color out to eliminate wrong guesses
+            this.style.backgroundColor = 'teal';
+            messageDisplay.textContent = "Try Again";
         }
-    })
+    });
+}
+
+function changeColors(color) {
+    // loop through all the squares
+    for (let i = 0; squares.length; i++) {
+        // Change each color to match given color
+        squares[i].style.backgroundColor = color; 
+        console.log(squares[i].style);
+    }
+    
 }
 
