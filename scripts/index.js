@@ -4,6 +4,21 @@ let colors = generateRandomColors(6);
 let squares = document.querySelectorAll('.square');
 let colorDisplay = document.querySelector('#colorDisplay');
 let messageDisplay = document.querySelector('#message');
+let resetButton = document.querySelector('#reset');
+
+resetButton.addEventListener('click', function() {
+    // generate all new colors
+    colors = generateRandomColors(6);
+    // Pick new random number from array
+    pickedColor = pickColor();
+    // Change color display to match picked color
+    colorDisplay.textContent = pickedColor;
+    // Change colors of squares
+    for (let i = 0; i < squares.length; i++) {
+        squares[i].style.backgroundColor = colors[i];
+    }
+})
+
 let pickedColor = pickColor();
 let h1 = document.querySelector('h1');
 colorDisplay.textContent = pickedColor;
