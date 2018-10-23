@@ -1,12 +1,5 @@
 // style.backgroundColor doesnot work in Firefox while style.background works in all browsers
-let colors = [
-    "rgb(255, 0, 0)",
-    "rgb(255, 255, 0)",
-    "rgb(0, 255, 0)",
-    "rgb(0, 255, 255)",
-    "rgb(0, 0, 255)",
-    "rgb(255, 0, 255)"
-];
+let colors = generateRandomColors(6);
 
 let squares = document.querySelectorAll('.square');
 let colorDisplay = document.querySelector('#colorDisplay');
@@ -21,9 +14,10 @@ for (let i = 0; i < squares.length; i++) {
     squares[i].addEventListener('click', function () {
         // Compare color to picked color
         let clickedColor = this.style.backgroundColor;
+
         if(clickedColor === pickedColor) {
             messageDisplay.textContent = 'Correct';
-            changeColors(clickedColor);
+            changeColors(clickedColor, pickedColor);
         } else {
             // Fades incorrect color out to eliminate wrong guesses
             this.style.backgroundColor = 'teal';
@@ -43,5 +37,17 @@ function changeColors(color) {
 function pickColor() {
     let random = Math.floor(Math.random() * colors.length);
     return colors[random];
+}
+
+function generateRandomColors(num) {
+    // make an array 
+    let arr = [];
+    // add num random colors to arrar
+    for (let i = 0; i < num; i++) {
+        // get random color and push into array
+        arr.push(randomColor());
+    }
+    // return the array
+    return arr;
 }
 
