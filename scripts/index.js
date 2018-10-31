@@ -42,7 +42,6 @@ hardBtn.addEventListener('click', function() {
 
 resetButton.addEventListener('click', function() {
 
-    resetButton.textContent = 'New Colors';
 
     // generate all new colors
     colors = generateRandomColors(numSquares);
@@ -50,8 +49,12 @@ resetButton.addEventListener('click', function() {
     // Pick new random number from array
     pickedColor = pickColor();
 
+    this.textContent = "New Colors";
+
     // Change color display to match picked color
     colorDisplay.textContent = pickedColor;
+
+    messageDisplay.textContent = '';
 
     // Change colors of squares
     for (let i = 0; i < squares.length; i++) {
@@ -78,10 +81,10 @@ for (let i = 0; i < squares.length; i++) {
         console.log(clickedColor, pickedColor);
 
         if(clickedColor === pickedColor) {
-
+            
             messageDisplay.textContent = 'Correct';
 
-            resetButton.textContent = 'Play Again';
+            resetButton.textContent = 'Play Again?';
             
             changeColors(clickedColor, pickedColor);
 
