@@ -46,6 +46,7 @@ function reset() {
     // Change colors of squares
     for (let i = 0; i < squares.length; i++) {
         if (colors[i]) {
+            squares[i].style.display = 'block';
             squares[i].style.backgroundColor = colors[i];
         } else {
             squares[i].style.display = 'none';
@@ -87,25 +88,7 @@ function reset() {
 
 resetButton.addEventListener('click', function() {
 
-
-    // generate all new colors
-    colors = generateRandomColors(numSquares);
-
-    // Pick new random number from array
-    pickedColor = pickColor();
-
-    this.textContent = "New Colors";
-
-    // Change color display to match picked color
-    colorDisplay.textContent = pickedColor;
-
-    messageDisplay.textContent = '';
-
-    // Change colors of squares
-    for (let i = 0; i < squares.length; i++) {
-        squares[i].style.backgroundColor = colors[i];
-    }
-    h1.style.backgroundColor = 'tan';
+   reset();
 
 })
 
